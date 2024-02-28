@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Shop from "./components/Shop";
+import Footer from "./components/Footer";
 import "./styles/App.css";
 
 const router = createBrowserRouter([
@@ -23,6 +24,7 @@ function App() {
     <>
       <Header />
       <RouterProvider router={router} />
+      <Footer />
     </>
   );
 }
