@@ -5,25 +5,20 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Shop from "./components/Shop";
+import About from "./components/About";
 import Footer from "./components/Footer";
 import "./styles/App.css";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "shop",
-    element: <Shop />,
-  },
-]);
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
       <Header />
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
       <Footer />
     </>
   );

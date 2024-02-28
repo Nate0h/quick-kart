@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="home">
+      <div className="Carousel">Carousel</div>
       <div className="shop">
         <div className="left">
           <p>sdssd</p>
