@@ -8,9 +8,10 @@ const Shop = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [url, setUrl] = useState("https://fakestoreapi.com/products");
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch(url)
       .then((response) => {
         if (!response.ok) {
           throw new Error(
@@ -31,14 +32,49 @@ const Shop = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [url]);
 
+  console.log(url);
   if (error) return <p>A network error was encountered</p>;
   if (loading) return <p>Loading...</p>;
 
   return (
     <div>
-      <div className="banner">Banner</div>
+      <div className="banner">
+        <div onClick={() => setUrl("https://fakestoreapi.com/products")}>
+          All
+        </div>
+        <div
+          onClick={() =>
+            setUrl("https://fakestoreapi.com/products/category/electronics")
+          }
+        >
+          Electronics
+        </div>
+        <div
+          onClick={() =>
+            setUrl("https://fakestoreapi.com/products/category/jewelery")
+          }
+        >
+          Jewelry
+        </div>
+        <div
+          onClick={() =>
+            setUrl("https://fakestoreapi.com/products/category/men's clothing")
+          }
+        >
+          Men's Clothing
+        </div>
+        <div
+          onClick={() =>
+            setUrl(
+              "https://fakestoreapi.com/products/category/women's clothing"
+            )
+          }
+        >
+          Women's Clothing
+        </div>
+      </div>
       <div className="shopContainer">
         <div className="categories"></div>
         <div className="cards">
