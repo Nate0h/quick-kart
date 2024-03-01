@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Shop from "./components/Shop";
+import SingleItem from "./components/SingleItem";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import "./styles/App.css";
@@ -17,6 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/singleItem" element={<SingleItem />} />
+
         <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
