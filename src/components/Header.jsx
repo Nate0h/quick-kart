@@ -10,10 +10,6 @@ const Header = () => {
         </div>
       </Link>
 
-      <div className="searchBar">
-        <input type="search" placeholder="Find your favorite kicks..." />
-      </div>
-
       <ul className="mainNav">
         <Link to="about">
           <li>About</li>

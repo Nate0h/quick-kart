@@ -1,15 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
 
-import Card from "./Card.jsx";
-import SingleItem from "./SingleItem.jsx";
+import ListCards from "./ListCards.jsx";
+
 const Shop = () => {
   const [data, setData] = useState(null);
+  const [search, setSearch] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [url, setUrl] = useState("https://fakestoreapi.com/products");
-
+  const [query, setQuery] = useState(false);
+  const [sort, setSort] = useState("asc");
+  const [url, setUrl] = useState(
+    `https://fakestoreapi.com/products?sort=${sort}`
+  );
+  let stringQuery;
   useEffect(() => {
     fetch(url)
       .then((response) => {
@@ -22,6 +26,7 @@ const Shop = () => {
       })
       .then((actualData) => {
         setData(actualData);
+        setSearch(actualData);
         console.log(JSON.stringify(actualData));
         setError(null);
       })
@@ -34,33 +39,79 @@ const Shop = () => {
       });
   }, [url]);
 
-  console.log(url);
   if (error) return <p>A network error was encountered</p>;
   if (loading) return <p>Loading...</p>;
 
+  const handleInputChange = (event) => {
+    if (!event.target.value) {
+      setSearch(data);
+      setQuery(true);
+    }
+
+    setQuery(false);
+    const resultsArray = data.filter((product) =>
+      product.title.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+
+    setSearch(resultsArray);
+    stringQuery = event.target.value;
+    alert(stringQuery);
+  };
+
+  function handleSort(e) {
+    let newSort = e.target.value;
+    let newUrl = url.replace(sort, newSort);
+    setSort(newSort);
+    setUrl(newUrl);
+  }
+
   return (
     <div>
+      <div className="searchBar">
+        <input
+          className="search-input"
+          type="text"
+          onChange={handleInputChange}
+          placeholder="Enter your search shoes."
+        />
+      </div>
+      <label htmlFor="sort">
+        <select onChange={handleSort} name="sort" id="sort">
+          <option value="asc">ASC</option>
+          <option value="desc">DESC</option>
+        </select>
+      </label>
       <div className="banner">
-        <div onClick={() => setUrl("https://fakestoreapi.com/products")}>
+        <div
+          onClick={() =>
+            setUrl(`https://fakestoreapi.com/products?sort=${sort}`)
+          }
+        >
           All
         </div>
         <div
           onClick={() =>
-            setUrl("https://fakestoreapi.com/products/category/electronics")
+            setUrl(
+              `https://fakestoreapi.com/products/category/electronics?sort=${sort}`
+            )
           }
         >
           Electronics
         </div>
         <div
           onClick={() =>
-            setUrl("https://fakestoreapi.com/products/category/jewelery")
+            setUrl(
+              `https://fakestoreapi.com/products/category/jewelery?sort=${sort}`
+            )
           }
         >
           Jewelry
         </div>
         <div
           onClick={() =>
-            setUrl("https://fakestoreapi.com/products/category/men's clothing")
+            setUrl(
+              `https://fakestoreapi.com/products/category/men's clothing?sort=${sort}`
+            )
           }
         >
           Men's Clothing
@@ -68,7 +119,7 @@ const Shop = () => {
         <div
           onClick={() =>
             setUrl(
-              "https://fakestoreapi.com/products/category/women's clothing"
+              `https://fakestoreapi.com/products/category/women's clothing?sort=${sort}`
             )
           }
         >
@@ -77,22 +128,8 @@ const Shop = () => {
       </div>
       <div className="shopContainer">
         <div className="categories"></div>
-        <div className="cards">
-          {data.map((item) => {
-            return (
-              <div key={item.id}>
-                <Card
-                  id={item.id}
-                  title={item.title}
-                  image={item.image}
-                  rating={item.rating}
-                  price={item.price}
-                  description={item.description}
-                />
-              </div>
-            );
-          })}
-        </div>
+        <ListCards searchResults={search} />
+        <div>{query && <div>dddddddddNothing Found</div>}</div>
       </div>
       <Link to="/">Home page</Link>
     </div>
