@@ -8,7 +8,6 @@ const Shop = () => {
   const [search, setSearch] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [query, setQuery] = useState(false);
   const [sort, setSort] = useState("asc");
   const [url, setUrl] = useState(
     `https://fakestoreapi.com/products?sort=${sort}`
@@ -45,10 +44,8 @@ const Shop = () => {
   const handleInputChange = (event) => {
     if (!event.target.value) {
       setSearch(data);
-      setQuery(true);
     }
 
-    setQuery(false);
     const resultsArray = data.filter((product) =>
       product.title.toLowerCase().includes(event.target.value.toLowerCase())
     );
@@ -129,7 +126,6 @@ const Shop = () => {
       <div className="shopContainer">
         <div className="categories"></div>
         <ListCards searchResults={search} />
-        <div>{query && <div>dddddddddNothing Found</div>}</div>
       </div>
       <Link to="/">Home page</Link>
     </div>

@@ -1,6 +1,9 @@
 import "../styles/Header.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import Cart from "./Cart.jsx";
 const Header = () => {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <nav className="container">
       <Link to="/">
@@ -19,7 +22,9 @@ const Header = () => {
           <li>Shop</li>
         </Link>
 
-        <li>Cart</li>
+        <Link to="cart">
+          <li>Cart</li>
+        </Link>
       </ul>
     </nav>
   );

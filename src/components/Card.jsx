@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
+import { useContext } from "react";
+import { ShopContext } from "../context/shop-context.jsx";
 
 const Card = (props) => {
+  const { addToCart } = useContext(ShopContext);
   const [num, setNum] = useState(0);
-  const dataToPass = { name: "John Doe", age: 25 };
+  const [order, setOrder] = [];
   return (
     <div>
       <Link to="singleItem" state={{ id: props.id }}>
@@ -45,7 +46,7 @@ const Card = (props) => {
             +
           </span>
         </div>
-        <button>Add To Cart</button>
+        <button onClick={() => addToCart(props.id, num)}>Add To Cart</button>
       </div>
     </div>
   );
