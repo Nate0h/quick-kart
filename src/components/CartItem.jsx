@@ -3,8 +3,13 @@ import { useContext } from "react";
 import { ShopContext } from "../context/shop-context.jsx";
 
 const CartItem = ({ id, quantity }) => {
-  const { addToCart, removeFromCart, cartItems, decrementCartItem } =
-    useContext(ShopContext);
+  const {
+    addToCart,
+    removeFromCart,
+    cartItems,
+    decrementCartItem,
+    updateCartItem,
+  } = useContext(ShopContext);
   const [num, setNum] = useState(quantity);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -55,7 +60,20 @@ const CartItem = ({ id, quantity }) => {
           >
             -
           </span>
-          <span className="num">{num}</span>
+          <span className="num">
+            {" "}
+            <input
+              type="num"
+              value={num}
+              onChange={(e) => {
+                if (isNaN(e.target.value)) {
+                  return 1;
+                }
+                updateCartItem(id, Number(e.target.value));
+                setNum(Number(e.target.value));
+              }}
+            />
+          </span>
           <span
             onClick={() => {
               addToCart(id, 1);
@@ -66,6 +84,7 @@ const CartItem = ({ id, quantity }) => {
             +
           </span>
         </div>
+        <button onClick={() => removeFromCart(id)}>Remove</button>
       </div>
     </div>
   );

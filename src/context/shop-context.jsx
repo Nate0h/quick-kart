@@ -26,8 +26,26 @@ export const ShopContextProvider = (props) => {
     }
   }
 
+  function updateCartItem(itemId, count) {
+    /* if (count == 0) {
+      removeFromCart(itemId);
+      return;
+    }*/
+    // Check if the item is already in the cart
+
+    const modifiedData = cartItems.map((cartItem) => {
+      if (cartItem.id === itemId) {
+        cartItem.quantity = count;
+      }
+
+      return cartItem;
+    });
+
+    setCartItems(modifiedData);
+  }
+
   function decrementCartItem(itemId, count) {
-    if (count == 1) {
+    if (count <= 1) {
       removeFromCart(itemId);
       return;
     }
@@ -53,6 +71,7 @@ export const ShopContextProvider = (props) => {
     addToCart,
     decrementCartItem,
     removeFromCart,
+    updateCartItem,
   };
 
   console.log(cartItems);

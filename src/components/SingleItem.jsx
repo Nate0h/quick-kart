@@ -67,7 +67,19 @@ const SingleItem = () => {
             >
               -
             </span>
-            <span className="num">{num}</span>
+            <span className="num">
+              {" "}
+              <input
+                type="num"
+                value={num}
+                onChange={(e) => {
+                  if (isNaN(e.target.value)) {
+                    return 0;
+                  }
+                  setNum(Number(e.target.value));
+                }}
+              />
+            </span>
             <span
               onClick={() => {
                 setNum(num + 1);
