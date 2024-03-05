@@ -16,8 +16,9 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   return (
     <>
-      <Header />
       <ShopContextProvider>
+        <Header />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />

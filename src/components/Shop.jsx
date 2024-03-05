@@ -1,6 +1,5 @@
 import { Link, ScrollRestoration } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import ListCards from "./ListCards.jsx";
 
 const Shop = () => {

@@ -1,8 +1,11 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { ShopContext } from "../context/shop-context.jsx";
 
 const SingleItem = () => {
   const location = useLocation();
+  const { addToCart, cartItems } = useContext(ShopContext);
   const { id } = location.state;
   const [num, setNum] = useState(0);
   const [data, setData] = useState(null);
@@ -75,7 +78,7 @@ const SingleItem = () => {
             </span>
           </div>
           <div>{data.description}</div>
-          <button>Add To Cart</button>
+          <button onClick={() => addToCart(id, num)}>Add To Cart</button>
         </div>
       </div>
     </div>

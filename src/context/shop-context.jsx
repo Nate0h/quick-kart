@@ -17,7 +17,7 @@ export const ShopContextProvider = (props) => {
         cartItem.quantity += count;
       }
 
-      return item;
+      return cartItem;
     });
 
     if (isItemInCart) setCartItems(modifiedData);
@@ -26,10 +26,34 @@ export const ShopContextProvider = (props) => {
     }
   }
 
-  const removeFromCart = (itemId) =>
-    setItems(cartItems.filter((cartItem) => cartItem.id !== itemId));
+  function decrementCartItem(itemId, count) {
+    if (count == 1) {
+      removeFromCart(itemId);
+      return;
+    }
 
-  const contextValue = { cartItems, addToCart, removeFromCart };
+    const modifiedData = cartItems.map((cartItem) => {
+      if (cartItem.id === itemId) {
+        cartItem.quantity -= 1;
+      }
+
+      return cartItem;
+    });
+    setCartItems(modifiedData);
+  }
+
+  const removeFromCart = (itemId) => {
+    const modifiedData = cartItems.filter((cartItem) => cartItem.id !== itemId);
+    console.log(modifiedData);
+    setCartItems(modifiedData);
+  };
+
+  const contextValue = {
+    cartItems,
+    addToCart,
+    decrementCartItem,
+    removeFromCart,
+  };
 
   console.log(cartItems);
 

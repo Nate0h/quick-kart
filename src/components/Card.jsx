@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { ShopContext } from "../context/shop-context.jsx";
 
 const Card = (props) => {
-  const { addToCart } = useContext(ShopContext);
+  const { addToCart, cartItems } = useContext(ShopContext);
   const [num, setNum] = useState(0);
   const [order, setOrder] = [];
   return (
