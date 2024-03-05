@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import SingleItem from "./components/SingleItem";
-import About from "./components/About";
+
 import Footer from "./components/Footer";
 import { ShopContextProvider } from "./context/shop-context";
 import "./styles/App.css";
@@ -25,8 +25,8 @@ function App() {
           <Route path="/shop/:id" element={<Shop />} />
           <Route path="/shop/singleItem" element={<SingleItem />} />
 
-          <Route path="/about" element={<About />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/cart/shop" element={<Shop />} />
         </Routes>
       </ShopContextProvider>
       <Footer />

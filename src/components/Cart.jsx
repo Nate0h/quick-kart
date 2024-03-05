@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { ShopContext } from "../context/shop-context.jsx";
+import { Link } from "react-router-dom";
 import CartItem from "./CartItem.jsx";
 const Cart = () => {
-  const { addToCart, cartItems } = useContext(ShopContext);
+  const { addToCart, cartItems, getTotal } = useContext(ShopContext);
+  const totalAmount = getTotal();
   if (cartItems.length == 0) {
     return <div>Nada</div>;
   }
@@ -23,6 +25,15 @@ const Cart = () => {
           );
         })}
       </div>
+
+      <div className="checkout"></div>
+      <p>Subtotal: ${totalAmount}</p>
+      <Link to="shop">
+        <button>Continue Shopping</button>
+      </Link>
+      <button onClick={() => alert("Your order has successfully processed")}>
+        Checkout
+      </button>
     </div>
   );
 };

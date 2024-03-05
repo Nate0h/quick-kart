@@ -76,7 +76,7 @@ const CartItem = ({ id, quantity }) => {
           </span>
           <span
             onClick={() => {
-              addToCart(id, 1);
+              addToCart(id, 1, data.price);
               setNum(num + 1);
             }}
             className="plus"

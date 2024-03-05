@@ -90,7 +90,9 @@ const SingleItem = () => {
             </span>
           </div>
           <div>{data.description}</div>
-          <button onClick={() => addToCart(id, num)}>Add To Cart</button>
+          <button onClick={() => addToCart(id, num, data.price)}>
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>

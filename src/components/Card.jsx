@@ -59,7 +59,9 @@ const Card = (props) => {
             +
           </span>
         </div>
-        <button onClick={() => addToCart(props.id, num)}>Add To Cart</button>
+        <button onClick={() => addToCart(props.id, num, props.price)}>
+          Add To Cart
+        </button>
       </div>
     </div>
   );
