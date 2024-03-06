@@ -1,20 +1,23 @@
 import "../styles/Header.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ShopContext } from "../context/shop-context.jsx";
-import Cart from "./Cart.jsx";
+import cartLogo from "../images/cart.png";
+
 const Header = () => {
-  const [openModal, setOpenModal] = useState(false);
-  const { addToCart, cartItems } = useContext(ShopContext);
+  const { cartItems } = useContext(ShopContext);
   let cart = cartItems.length !== 0 ? <div>{cartItems.length} </div> : null;
 
   return (
     <nav className="container">
       <Link to="/">
         <div className="logoHead">
-          <span> Quick Kicks</span>
-          <img src="" alt="" />
+          <span> Quick Kart</span>
+          <img
+            src={cartLogo}
+            style={{ width: "50px", height: "auto" }}
+            alt=""
+          />
         </div>
       </Link>
 
