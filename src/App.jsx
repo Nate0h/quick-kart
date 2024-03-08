@@ -8,7 +8,6 @@ import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import SingleItem from "./components/SingleItem";
 
-import Footer from "./components/Footer";
 import { ShopContextProvider } from "./context/shop-context";
 import "./styles/App.css";
 import { Route, Routes } from "react-router-dom";
@@ -29,7 +28,6 @@ function App() {
           <Route path="/cart/shop" element={<Shop />} />
         </Routes>
       </ShopContextProvider>
-      <Footer />
     </>
   );
 }

@@ -15,7 +15,7 @@ const Header = () => {
           <span> Quick Kart</span>
           <img
             src={cartLogo}
-            style={{ width: "50px", height: "auto" }}
+            style={{ width: "3rem", height: "auto" }}
             alt=""
           />
         </div>
@@ -27,7 +27,7 @@ const Header = () => {
         </Link>
 
         <Link to="cart">
-          <li>Cart {cart}</li>
+          <li>Kart {cart}</li>
         </Link>
       </ul>
     </nav>
