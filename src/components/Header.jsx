@@ -27,7 +27,8 @@ const Header = () => {
         </Link>
 
         <Link to="cart">
-          <li>Kart {cart}</li>
+          <li>Kart</li>
+          {cart && <div className="kart">{cart}</div>}
         </Link>
       </ul>
     </nav>

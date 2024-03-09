@@ -2,28 +2,28 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ShopContext } from "../context/shop-context.jsx";
+import "../styles/Shop.css";
 
 const Card = (props) => {
-  const { addToCart, cartItems } = useContext(ShopContext);
+  const { addToCart } = useContext(ShopContext);
   const [num, setNum] = useState(0);
-  const [order, setOrder] = [];
-  return (
-    <div>
-      <Link to="singleItem" state={{ id: props.id }}>
-        <img
-          src={props.image}
-          alt=""
-          style={{ width: "100px", height: "auto" }}
-        />
-      </Link>
 
-      <div>
-        <div>
-          {props.title}
-          {props.rating.rate}
-        </div>
-        <div>{props.price}</div>
-        <div className="wrapper">
+  return (
+    <div className="card">
+      <div className="image">
+        <Link to="singleItem" state={{ id: props.id }}>
+          <img
+            src={props.image}
+            alt=""
+            style={{ width: "100px", height: "auto" }}
+          />
+        </Link>
+      </div>
+
+      <div className="cardDetails">
+        <div className="itemName">{props.title}</div>
+        <div className="itemPrice">${props.price.toFixed(2)}</div>
+        <div className="inputWrapper">
           <span
             onClick={() => {
               if (num > 0) {
@@ -48,7 +48,6 @@ const Card = (props) => {
                 setNum(Number(e.target.value));
               }}
             />
-            {num}
           </span>
           <span
             onClick={() => {
@@ -59,7 +58,10 @@ const Card = (props) => {
             +
           </span>
         </div>
-        <button onClick={() => addToCart(props.id, num, props.price)}>
+        <button
+          className="addCart"
+          onClick={() => addToCart(props.id, num, props.price)}
+        >
           Add To Cart
         </button>
       </div>

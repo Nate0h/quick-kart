@@ -37,8 +37,22 @@ nav {
 }
 
 .mainNav li {
-  padding: 1rem;
+  padding: 1.2rem;
 }
 .mainNav li:hover {
   color: white;
+}
+
+.kart {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  position: absolute;
+  top: 4%;
+  right: 1%;
+  width: 20px;
+  height: 20px;
+  color: red;
+  background-color: antiquewhite;
+  border-radius: 50%;
 }

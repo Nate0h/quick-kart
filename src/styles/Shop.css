@@ -29,7 +29,8 @@
 .searchBar {
   margin-top: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-right: 1rem;
 }
 
 .searchInput {
@@ -52,9 +53,9 @@
 }
 
 .shopSections {
-  margin-top: 2rem;
   margin-bottom: 2rem;
   padding: 2rem;
+  background-color: antiquewhite;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   display: flex;
@@ -79,4 +80,85 @@ label {
 .banner div:hover {
   cursor: pointer;
   color: red;
+}
+
+.shopContainer main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+  align-content: center;
+}
+
+.card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.cardDetails {
+  display: flex;
+  flex-direction: column;
+  justify-items: space-between;
+}
+
+.card .image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.itemName {
+  text-align: center;
+  font-weight: 400;
+  font-family: Helvetica, sans-serif;
+}
+
+.itemPrice {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: center;
+  align-content: flex-end;
+}
+
+.inputWrapper input {
+  height: 20px;
+  width: 30px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.minus,
+.plus {
+  height: 20px;
+  cursor: pointer;
+  text-align: center;
+  background-color: red;
+  border: 1px solid black;
+  width: 20px;
+}
+
+.addCart {
+  border-style: none;
+  background-color: antiquewhite;
+  border: 1px solid black;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 0.5rem;
+  width: 5rem;
+  transition: all 0.3s ease;
+}
+
+.addCart:hover {
+  cursor: pointer;
+  background-color: red;
+}
+.card .image img:hover {
+  cursor: pointer;
+  transform: scale(1.15);
 }

@@ -1,4 +1,5 @@
 import Card from "./Card";
+import "../styles/Shop.css";
 
 const ListCards = ({ searchResults }) => {
   const results = searchResults.map((item) => (

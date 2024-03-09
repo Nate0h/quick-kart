@@ -1,5 +1,4 @@
 import "../styles/Shop.css";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ListCards from "./ListCards.jsx";
 
@@ -57,7 +56,6 @@ const Shop = () => {
 
   function handleSort(e) {
     let newSort = e.target.value;
-    alert(newSort);
     let newUrl = url.replace(sort, newSort);
     setSort(newSort);
     setUrl(newUrl);
@@ -65,14 +63,6 @@ const Shop = () => {
 
   return (
     <div>
-      <div className="searchBar">
-        <input
-          className="searchInput"
-          type="text"
-          onChange={handleInputChange}
-          placeholder="Search for your item..."
-        />
-      </div>
       <div className="shopSections">
         <label htmlFor="sort">
           <select onChange={handleSort} value={sort} name="sort" id="sort">
@@ -126,11 +116,17 @@ const Shop = () => {
           </div>
         </div>
       </div>
+      <div className="searchBar">
+        <input
+          className="searchInput"
+          type="text"
+          onChange={handleInputChange}
+          placeholder="Search for your item..."
+        />
+      </div>
       <div className="shopContainer">
-        <div className="categories"></div>
         <ListCards searchResults={search} />
       </div>
-      <Link to="/">Home page</Link>
     </div>
   );
 };

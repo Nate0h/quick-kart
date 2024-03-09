@@ -30,12 +30,6 @@ export const ShopContextProvider = (props) => {
   }
 
   function updateCartItem(itemId, count) {
-    /* if (count == 0) {
-      removeFromCart(itemId);
-      return;
-    }*/
-    // Check if the item is already in the cart
-
     const modifiedData = cartItems.map((cartItem) => {
       if (cartItem.id === itemId) {
         cartItem.quantity = count;
