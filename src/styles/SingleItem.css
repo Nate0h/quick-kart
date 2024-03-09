@@ -1,0 +1,93 @@
+@font-face {
+  font-family: Ananda;
+  src: url("../fonts/AnandaBlackPersonalUseRegular-rg9Rx.ttf")
+    format("truetype");
+}
+
+.loader {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid red; /* Blue */
+  border-bottom: 10px solid red; /* Blue */
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.singleItemContainer {
+  display: flex;
+  flex: auto;
+  gap: 1rem;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20vh;
+}
+
+.singleItemRight {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 700px;
+}
+
+.singleTitle {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.descr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.wrapper {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.wrapper input {
+  height: 20px;
+  width: 30px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.splus,
+.sminus {
+  height: 20px;
+  width: 25px;
+  cursor: pointer;
+  text-align: center;
+  background-color: red;
+  border: 1px solid black;
+}
+
+.addCart2 {
+  border-style: none;
+  background-color: antiquewhite;
+  border: 1px solid black;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 0.5rem;
+  height: 2rem;
+  width: 7rem;
+  transition: all 0.3s ease;
+}
+
+.addCart2:hover {
+  cursor: pointer;
+  background-color: red;
+}

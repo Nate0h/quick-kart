@@ -49,7 +49,7 @@ const CartItem = ({ id, quantity }) => {
         <p>
           <b>{data.title}</b>
         </p>
-        <p>${data.price}</p>
+        <p>${data.price.toFixed(2)}</p>
         <div className="wrapper">
           <span
             onClick={() => {

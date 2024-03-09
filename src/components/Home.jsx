@@ -9,7 +9,7 @@ const Home = () => {
         </button>
         <div className="footer">
           <p>Made by NateOh</p>
-          <a href="">
+          <a href="https://github.com/Nate0h/quick-kicks">
             {" "}
             <img
               src={githubLogo}

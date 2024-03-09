@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
+import "../styles/Cart.css";
 import { useContext } from "react";
 import { ShopContext } from "../context/shop-context.jsx";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem.jsx";
 const Cart = () => {
-  const { addToCart, cartItems, getTotal } = useContext(ShopContext);
+  const { cartItems, getTotal } = useContext(ShopContext);
   const totalAmount = getTotal();
   if (cartItems.length == 0) {
-    return <div>Nada</div>;
+    return <h1 style={{ marginLeft: "2rem" }}>Cart is Empty</h1>;
   }
   return (
-    <div>
+    <div className="cartContainer">
       <div>
         <h1>Your Cart Items</h1>
       </div>
@@ -28,12 +28,17 @@ const Cart = () => {
 
       <div className="checkout"></div>
       <p>Subtotal: ${totalAmount}</p>
-      <Link to="shop">
-        <button>Continue Shopping</button>
-      </Link>
-      <button onClick={() => alert("Your order has successfully processed")}>
-        Checkout
-      </button>
+      <div className="buttonContainer">
+        <Link to="shop">
+          <button className="continueShop">Continue Shopping</button>
+        </Link>
+        <button
+          className="checkOutButton"
+          onClick={() => alert("Your order has successfully processed")}
+        >
+          Checkout
+        </button>
+      </div>
     </div>
   );
 };

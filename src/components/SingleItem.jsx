@@ -1,3 +1,4 @@
+import "../styles/SingleItem.css";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
@@ -5,7 +6,7 @@ import { ShopContext } from "../context/shop-context.jsx";
 
 const SingleItem = () => {
   const location = useLocation();
-  const { addToCart, cartItems } = useContext(ShopContext);
+  const { addToCart } = useContext(ShopContext);
   const { id } = location.state;
   const [num, setNum] = useState(0);
   const [data, setData] = useState(null);
@@ -37,63 +38,65 @@ const SingleItem = () => {
   }, []);
 
   if (error) return <p>A network error was encountered</p>;
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className="loader"></div>;
 
   return (
-    <div>
-      <div>
+    <div className="singleItemContainer">
+      <div className="image">
         <img
           src={data.image}
           alt=""
-          style={{ width: "100px", height: "auto" }}
+          style={{ width: "250px", height: "auto" }}
         />
+      </div>
 
+      <div className="singleItemRight">
         <div>
-          <div>
-            {data.title}
-            {data.rating.rate}
-          </div>
-          <div>{data.price}</div>
-          <div className="wrapper">
-            <span
-              onClick={() => {
-                if (num > 0) {
-                  setNum(num - 1);
-                } else {
-                  setNum(0);
-                }
-              }}
-              className="minus"
-            >
-              -
-            </span>
-            <span className="num">
-              {" "}
-              <input
-                type="num"
-                value={num}
-                onChange={(e) => {
-                  if (isNaN(e.target.value)) {
-                    return 0;
-                  }
-                  setNum(Number(e.target.value));
-                }}
-              />
-            </span>
-            <span
-              onClick={() => {
-                setNum(num + 1);
-              }}
-              className="plus"
-            >
-              +
-            </span>
-          </div>
-          <div>{data.description}</div>
-          <button onClick={() => addToCart(id, num, data.price)}>
-            Add To Cart
-          </button>
+          <div className="singleTitle">{data.title}</div>
+          <div className="descr">{data.description}</div>
         </div>
+        <div>${data.price.toFixed(2)}</div>
+        <div className="wrapper">
+          <span
+            onClick={() => {
+              if (num > 0) {
+                setNum(num - 1);
+              } else {
+                setNum(0);
+              }
+            }}
+            className="sminus"
+          >
+            -
+          </span>
+          <span className="num">
+            {" "}
+            <input
+              type="num"
+              value={num}
+              onChange={(e) => {
+                if (isNaN(e.target.value)) {
+                  return 0;
+                }
+                setNum(Number(e.target.value));
+              }}
+            />
+          </span>
+          <span
+            onClick={() => {
+              setNum(num + 1);
+            }}
+            className="splus"
+          >
+            +
+          </span>
+        </div>
+        <button
+          className="addCart2"
+          onClick={() => addToCart(id, num, data.price)}
+        >
+          Add To Cart
+        </button>
       </div>
     </div>
   );
