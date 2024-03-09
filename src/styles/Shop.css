@@ -16,3 +16,28 @@
     transform: rotate(360deg);
   }
 }
+
+.searchBar {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.searchInput {
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
+  border-style: none;
+  border-bottom: 2px solid red;
+  font-family: Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.5rem;
+  min-width: 300px;
+  transition: 300ms ease;
+}
+
+.searchInput:focus {
+  outline: red;
+  outline-style: solid;
+}

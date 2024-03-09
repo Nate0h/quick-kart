@@ -66,7 +66,7 @@ const Shop = () => {
     <div>
       <div className="searchBar">
         <input
-          className="search-input"
+          className="searchInput"
           type="text"
           onChange={handleInputChange}
           placeholder="Enter your search shoes."
