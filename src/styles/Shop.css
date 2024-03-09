@@ -1,4 +1,13 @@
+@font-face {
+  font-family: Ananda;
+  src: url("../fonts/AnandaBlackPersonalUseRegular-rg9Rx.ttf")
+    format("truetype");
+}
+
 .loader {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   border: 10px solid #f3f3f3; /* Light grey */
   border-top: 10px solid red; /* Blue */
   border-bottom: 10px solid red; /* Blue */
@@ -40,4 +49,34 @@
 .searchInput:focus {
   outline: red;
   outline-style: solid;
+}
+
+.shopSections {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  display: flex;
+  flex: 1;
+}
+
+label {
+  margin-left: 3rem;
+}
+
+.banner {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+  font-family: Ananda, Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+}
+.banner div {
+  padding: 0.3rem;
+}
+
+.banner div:hover {
+  cursor: pointer;
+  color: red;
 }

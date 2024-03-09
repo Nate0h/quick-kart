@@ -14,6 +14,7 @@ const Shop = () => {
   );
   let stringQuery;
   useEffect(() => {
+    setLoading(true);
     fetch(url)
       .then((response) => {
         if (!response.ok) {
@@ -52,11 +53,11 @@ const Shop = () => {
 
     setSearch(resultsArray);
     stringQuery = event.target.value;
-    alert(stringQuery);
   };
 
   function handleSort(e) {
     let newSort = e.target.value;
+    alert(newSort);
     let newUrl = url.replace(sort, newSort);
     setSort(newSort);
     setUrl(newUrl);
@@ -69,58 +70,60 @@ const Shop = () => {
           className="searchInput"
           type="text"
           onChange={handleInputChange}
-          placeholder="Enter your search shoes."
+          placeholder="Search for your item..."
         />
       </div>
-      <label htmlFor="sort">
-        <select onChange={handleSort} name="sort" id="sort">
-          <option value="asc">ASC</option>
-          <option value="desc">DESC</option>
-        </select>
-      </label>
-      <div className="banner">
-        <div
-          onClick={() =>
-            setUrl(`https://fakestoreapi.com/products?sort=${sort}`)
-          }
-        >
-          All
-        </div>
-        <div
-          onClick={() =>
-            setUrl(
-              `https://fakestoreapi.com/products/category/electronics?sort=${sort}`
-            )
-          }
-        >
-          Electronics
-        </div>
-        <div
-          onClick={() =>
-            setUrl(
-              `https://fakestoreapi.com/products/category/jewelery?sort=${sort}`
-            )
-          }
-        >
-          Jewelry
-        </div>
-        <div
-          onClick={() =>
-            setUrl(
-              `https://fakestoreapi.com/products/category/men's clothing?sort=${sort}`
-            )
-          }
-        >
-          Men's Clothing
-        </div>
-        <div
-          onClick={() =>
-            setUrl(
-              `https://fakestoreapi.com/products/category/women's clothing?sort=${sort}`
-            )
-          }
-        >
-          Women's Clothing
+      <div className="shopSections">
+        <label htmlFor="sort">
+          <select onChange={handleSort} value={sort} name="sort" id="sort">
+            <option value="asc">ASC</option>
+            <option value="desc">DESC</option>
+          </select>
+        </label>
+        <div className="banner">
+          <div
+            onClick={() =>
+              setUrl(`https://fakestoreapi.com/products?sort=${sort}`)
+            }
+          >
+            All
+          </div>
+          <div
+            onClick={() =>
+              setUrl(
+                `https://fakestoreapi.com/products/category/electronics?sort=${sort}`
+              )
+            }
+          >
+            Electronics
+          </div>
+          <div
+            onClick={() =>
+              setUrl(
+                `https://fakestoreapi.com/products/category/jewelery?sort=${sort}`
+              )
+            }
+          >
+            Jewelry
+          </div>
+          <div
+            onClick={() =>
+              setUrl(
+                `https://fakestoreapi.com/products/category/men's clothing?sort=${sort}`
+              )
+            }
+          >
+            Men's Clothing
+          </div>
+          <div
+            onClick={() =>
+              setUrl(
+                `https://fakestoreapi.com/products/category/women's clothing?sort=${sort}`
+              )
+            }
+          >
+            Women's Clothing
+          </div>
         </div>
       </div>
       <div className="shopContainer">
