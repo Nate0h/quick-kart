@@ -1,4 +1,5 @@
-import { Link, ScrollRestoration } from "react-router-dom";
+import "../styles/Shop.css";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ListCards from "./ListCards.jsx";
 
@@ -38,7 +39,7 @@ const Shop = () => {
   }, [url]);
 
   if (error) return <p>A network error was encountered</p>;
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className="loader"></div>;
 
   const handleInputChange = (event) => {
     if (!event.target.value) {
